@@ -23,13 +23,20 @@ import {
   ChevronRightIcon,
 } from "@chakra-ui/icons";
 
+// Fonts
+import { Outfit } from "next/font/google";
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: "400",
+});
+
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
     <Box>
       <Flex
-        bg={useColorModeValue("white", "gray.800")}
+        bg={useColorModeValue("gray.100", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
         py={{ base: 2 }}
@@ -59,7 +66,13 @@ export default function WithSubnavigation() {
             fontFamily={"heading"}
             color={useColorModeValue("gray.800", "white")}
           >
-            <Button as="a" href="/" variant={"link"}>
+            <Button
+              as="a"
+              href="/"
+              variant="ghost"
+              className={outfit.className}
+              fontSize={"xl"}
+            >
               attend.me
             </Button>
           </Text>
@@ -77,26 +90,16 @@ export default function WithSubnavigation() {
         >
           <Button
             as={"a"}
-            fontSize={"sm"}
-            fontWeight={400}
-            variant={"link"}
-            href="/signin"
-          >
-            Sign In
-          </Button>
-          <Button
-            as={"a"}
             display={{ base: "none", md: "inline-flex" }}
             fontSize={"sm"}
             fontWeight={600}
             color={"white"}
-            href="/signup"
-            bg={"pink.400"}
+            bg={"teal.400"}
             _hover={{
-              bg: "pink.300",
+              bg: "teal.300",
             }}
           >
-            Sign Up
+            Contact Us
           </Button>
         </Stack>
       </Flex>
@@ -269,42 +272,42 @@ interface NavItem {
 }
 
 const NAV_ITEMS: Array<NavItem> = [
-  {
-    label: "Inspiration",
-    children: [
-      {
-        label: "Explore Design Work",
-        subLabel: "Trending Design to inspire you",
-        href: "#",
-      },
-      {
-        label: "New & Noteworthy",
-        subLabel: "Up-and-coming Designers",
-        href: "#",
-      },
-    ],
-  },
-  {
-    label: "Find Work",
-    children: [
-      {
-        label: "Job Board",
-        subLabel: "Find your dream design job",
-        href: "#",
-      },
-      {
-        label: "Freelance Projects",
-        subLabel: "An exclusive list for contract work",
-        href: "#",
-      },
-    ],
-  },
-  {
-    label: "Learn Design",
-    href: "#",
-  },
-  {
-    label: "Hire Designers",
-    href: "#",
-  },
+  // {
+  //   label: "Inspiration",
+  //   children: [
+  //     {
+  //       label: "Explore Design Work",
+  //       subLabel: "Trending Design to inspire you",
+  //       href: "#",
+  //     },
+  //     {
+  //       label: "New & Noteworthy",
+  //       subLabel: "Up-and-coming Designers",
+  //       href: "#",
+  //     },
+  //   ],
+  // },
+  // {
+  //   label: "Find Work",
+  //   children: [
+  //     {
+  //       label: "Job Board",
+  //       subLabel: "Find your dream design job",
+  //       href: "#",
+  //     },
+  //     {
+  //       label: "Freelance Projects",
+  //       subLabel: "An exclusive list for contract work",
+  //       href: "#",
+  //     },
+  //   ],
+  // },
+  // {
+  //   label: "Learn Design",
+  //   href: "#",
+  // },
+  // {
+  //   label: "Hire Designers",
+  //   href: "#",
+  // },
 ];
